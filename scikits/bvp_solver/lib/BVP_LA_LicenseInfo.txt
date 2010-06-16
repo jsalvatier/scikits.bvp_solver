@@ -1,0 +1,11 @@
+c (ii) From the LINPACK (www.netlib.org/linpack/index.html)numerical 
+c software collection: dsvdc (www.netlib.org/linpack/dsvdc.f).
+c We have modified this source code slightly: declarations like 
+c array(1) were changed to array(*). The LINPACK website does not
+c provide any comment on legal restrictions associated with the
+c use of this software.
+
+c (iii) From the BLAS (www.netlib.org/blas/) numerical software 
+c collection: daxpy,ddot,dscal,dswap,dnrm2,drotg. These routines 
+c are subject to the following legal restrictions: 
+c www.netlib.org/blas/faq.html#2

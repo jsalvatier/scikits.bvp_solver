@@ -1,0 +1,248 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module guess_3_wrap__user__routines
+    interface guess_3_wrap_user_interface
+        subroutine fcn(x,y) !
+            double precision intent(in) :: x
+            double precision dimension(:), intent(out) :: y
+        end subroutine fcn
+    end interface guess_3_wrap_user_interface
+end python module guess_3_wrap__user__routines
+
+python module bvp_solver_wrap__user__routines
+    interface fsub
+            subroutine fsub(T, Y,ny, FTY)
+                double precision intent(in) :: T
+                double precision dimension(ny), intent(in), depend(ny) :: Y
+                integer intent(in,hide) :: ny
+                double precision dimension(:), intent(out) :: FTY
+        end subroutine fsub
+    end interface fsub
+
+    interface fsubp
+    	subroutine fsubp(T, Y,ny, P, np, FTY)
+                double precision intent(in) :: T
+                double precision dimension(ny), intent(in), depend(ny) :: Y
+                integer intent(in,hide) :: ny
+                double precision, dimension(np), intent(in), depend(np) :: P
+                integer, intent(in,hide) :: np
+                double precision dimension(:), intent(out) :: FTY
+    	end subroutine fsubp
+    end interface fsubp
+
+    interface bcsub
+    	subroutine bcsub(YA,nya, YB, nyb, BCA, BCB)
+                double precision dimension(nya), intent(in), depend(nya) :: YA
+                integer intent(in,hide) :: nya
+                double precision dimension(nyb), intent(in), depend(nyb) :: YB
+                integer intent(in,hide) :: nyb
+                double precision dimension(:), intent(out) :: BCA
+                double precision dimension(:), intent(out) :: BCB
+    	end subroutine bcsub
+    end interface bcsub
+
+    interface bcsubp
+        subroutine bcsubp(YA,nya, YB, nyb,P, np, BCA, BCB)
+                double precision dimension(nya), intent(in), depend(nya) :: YA
+                integer intent(in,hide) :: nya
+                double precision dimension(nyb), intent(in), depend(nyb) :: YB
+                integer intent(in,hide) :: nyb
+                double precision dimension(np), intent(in), depend(np) :: P
+                integer intent(in,hide) :: np
+                double precision dimension(:), intent(out) :: BCA
+                double precision dimension(:), intent(out) :: BCB
+        end subroutine bcsubp
+    end interface bcsubp
+
+    interface dfdy
+    	subroutine dfdy(T, Y,ny, PD)
+                double precision intent(in) :: T
+                double precision dimension(ny), intent(in), depend(ny) :: Y
+                integer intent(in,hide) :: ny
+                double precision dimension(:,:), intent(out) :: PD
+    	end subroutine dfdy
+    end interface dfdy
+
+    interface dfdyp
+        subroutine dfdyp(T, Y,ny,P, np, PD, PDP)
+                double precision intent(in) :: T
+                double precision dimension(ny), intent(in), depend(ny) :: Y
+                integer intent(in,hide) :: ny
+                double precision dimension(np), intent(in), depend(np) :: P
+                integer intent(in,hide) :: np
+                double precision dimension(:,:), intent(out) :: PD
+                double precision dimension(:,:), intent(out) :: PDP
+        end subroutine dfdyp
+    end interface dfdyp
+
+    interface dbcdy
+        subroutine dbcdy(YA,nya, YB, nyb, PDYA, PDYB)
+                double precision dimension(nya), intent(in), depend(nya) :: YA
+                integer intent(in,hide) :: nya
+                double precision dimension(nyb), intent(in), depend(nyb) :: YB
+                integer intent(in,hide) :: nyb
+                double precision dimension(:,:), intent(out) :: PDYA
+                double precision dimension(:,:), intent(out) :: PDYB
+        end subroutine dbcdy
+    end interface dbcdy
+
+    interface dbcdyp
+    	subroutine dbcdyp(YA,nya, YB, nyb, PDYA, PDYB, P, np,PDYAP,PDYBP)
+                double precision dimension(nya), intent(in), depend(nya) :: YA
+                integer intent(in,hide) :: nya
+                double precision dimension(nyb), intent(in), depend(nyb) :: YB
+                integer intent(in,hide) :: nyb
+                double precision dimension(:,:), intent(out) :: PDYA
+                double precision dimension(:,:), intent(out) :: PDYB
+                double precision dimension(np), intent(in), depend(np) :: P
+                integer intent(in,hide) :: np
+                double precision dimension(:,:), intent(out) :: PDYAP
+                double precision dimension(:,:), intent(out) :: PDYBP
+    	end subroutine dbcdyp
+    end interface dbcdyp
+end python module bvp_solver_wrap__user__routines
+
+python module bvp_solverf ! in
+    interface  ! in :bvp_solverf
+        module bvp ! in :bvp_solverf:BVP_INTERFACE.f90
+            use bvp_m,
+            integer :: node
+            double precision allocatable,dimension(:) :: x
+            double precision allocatable,dimension(:) :: work
+            integer allocatable,dimension(:) :: iwork
+            double precision allocatable,dimension(:,:) :: y
+            integer :: npar
+            integer :: leftbc
+            integer :: info
+            integer :: mxnsub
+            double precision allocatable, dimension(:) :: parameters
+            integer :: npts
+            double precision :: yerror
+
+            double precision allocatable,dimension(:,:) :: evaluated
+            double precision allocatable,dimension(:,:) :: evaluated_d
+            subroutine guess_1_wrap(node_in,nparam_in,leftbc_in,n,x_in,y_in,np,parameters_in,mxnsub_in) ! in :bvp_solverf:BVP_INTERFACE.f90:bvp
+                integer optional,check(len(y_in)>=node_in),depend(y_in) :: node_in=len(y_in)
+                integer :: nparam_in
+                integer :: leftbc_in
+                integer optional,check(len(x_in)>=n),depend(x_in) :: n=len(x_in)
+                double precision dimension(n) :: x_in
+                double precision dimension(node_in) :: y_in
+                integer optional,check(len(parameters_in)>=np),depend(parameters_in) :: np=len(parameters_in)
+                double precision dimension(np) :: parameters_in
+                integer :: mxnsub_in
+            end subroutine guess_1_wrap
+            subroutine guess_2_wrap(node_in,nparam_in,leftbc_in,n,x_in,y_in,np,parameters_in,mxnsub_in) ! in :bvp_solverf:BVP_INTERFACE.f90:bvp
+                integer optional,check(shape(y_in,0)==node_in),depend(y_in) :: node_in=shape(y_in,0)
+                integer :: nparam_in
+                integer :: leftbc_in
+                integer optional,check(len(x_in)>=n),depend(x_in) :: n=len(x_in)
+                double precision dimension(n) :: x_in
+                double precision dimension(node_in,n),depend(n) :: y_in
+                integer optional,check(len(parameters_in)>=np),depend(parameters_in) :: np=len(parameters_in)
+                double precision optional,dimension(np) :: parameters_in
+                integer optional :: mxnsub_in
+            end subroutine guess_2_wrap
+            subroutine guess_3_wrap(node_in,nparam_in,leftbc_in,n,x_in,fcn,np,parameters_in,mxnsub_in) ! in :bvp_solverf:BVP_INTERFACE.f90:bvp
+                use guess_3_wrap__user__routines
+                integer :: node_in
+                integer :: nparam_in
+                integer :: leftbc_in
+                integer optional,check(len(x_in)>=n),depend(x_in) :: n=len(x_in)
+                double precision dimension(:) :: x_in
+                external fcn
+                integer optional,check(len(parameters_in)>=np),depend(parameters_in) :: np=len(parameters_in)
+                double precision optional,dimension(np) :: parameters_in
+                integer optional :: mxnsub_in
+            end subroutine guess_3_wrap
+            subroutine bvp_solver_wrap(node_in,npar_in,leftbc_in,npts_in,info_in,mxnsub_in,n,x_in,ny1,ny2,y_in,np,parameters_in,work_in , nwork, iwork_in, niwork,fsub,fsubp,bcsub,bcsubp,singular,ns1, ns2, singularterm,method,tol,hasdfdy,dfdy,dfdyp,hasdbcdy,dbcdy,dbcdyp,trace,stop_on_fail) ! in :bvp_solverf:BVP_INTERFACE.f90:bvp
+                use bvp_solver_wrap__user__routines
+                integer :: node_in
+                integer :: npar_in
+                integer :: leftbc_in
+                integer :: npts_in
+                integer :: info_in
+                integer :: mxnsub_in
+                integer optional,check(len(x_in)>=n),depend(x_in) :: n=len(x_in)
+                double precision dimension(n) :: x_in
+                integer optional,check(shape(y_in,0)==ny1),depend(y_in) :: ny1=shape(y_in,0)
+                integer optional,check(shape(y_in,1)==ny2),depend(y_in) :: ny2=shape(y_in,1)
+                double precision dimension(ny1,ny2) :: y_in
+                integer optional,check(len(parameters_in)>=np),depend(parameters_in) :: np=len(parameters_in)
+                double precision dimension(np) :: parameters_in
+                integer optional,check(len(work_in)>=nwork),depend(work_in) :: nwork=len(work_in)
+                double precision dimension(nwork) :: work_in
+                integer optional,check(len(iwork_in)>=niwork),depend(iwork_in) :: niwork=len(iwork_in)
+                integer dimension(niwork) ::iwork_in
+                external fsub
+                external fsubp
+                external bcsub
+                external bcsubp
+                logical :: singular
+                integer optional,check(shape(singularterm,0)==ns1),depend(singularterm) :: ns1=shape(singularterm,0)
+                integer optional,check(shape(singularterm,1)==ns2),depend(singularterm) :: ns2=shape(singularterm,1)
+                double precision optional,dimension(ns1,ns2) :: singularterm
+                integer optional :: method
+                double precision optional :: tol
+                logical :: hasdfdy
+                external dfdy
+                external dfdyp
+                logical :: hasdbcdy
+                external dbcdy
+                external dbcdyp
+                integer optional :: trace
+                logical optional :: stop_on_fail
+            end subroutine bvp_solver_wrap
+            subroutine bvp_eval_wrap(eval_derivative, points,npoints, node_in,npar_in,leftbc_in,npts_in,info_in,mxnsub_in,n,x_in,ny1,ny2,y_in,np,parameters_in,work_in , nwork, iwork_in, niwork) ! in :bvp_solverf:BVP_INTERFACE.f90:bvp
+                logical :: eval_derivative
+                integer optional,check(len(points)>=npoints),depend(points) :: npoints=len(points)
+                double precision dimension(npoints) :: points
+                integer :: node_in
+                integer :: npar_in
+                integer :: leftbc_in
+                integer :: npts_in
+                integer :: info_in
+                integer :: mxnsub_in
+                integer optional,check(len(x_in)>=n),depend(x_in) :: n=len(x_in)
+                double precision dimension(n) :: x_in
+                integer optional,check(shape(y_in,0)==ny1),depend(y_in) :: ny1=shape(y_in,0)
+                integer optional,check(shape(y_in,1)==ny2),depend(y_in) :: ny2=shape(y_in,1)
+                double precision dimension(ny1,ny2) :: y_in
+                integer optional,check(len(parameters_in)>=np),depend(parameters_in) :: np=len(parameters_in)
+                double precision dimension(np) :: parameters_in
+                integer optional,check(len(work_in)>=nwork),depend(work_in) :: nwork=len(work_in)
+                double precision dimension(nwork) :: work_in
+                integer optional,check(len(iwork_in)>=niwork),depend(iwork_in) :: niwork=len(iwork_in)
+                integer dimension(niwork) ::iwork_in
+            end subroutine bvp_eval_wrap
+            subroutine bvp_extend_wrap( node_in,npar_in,leftbc_in,npts_in,info_in,mxnsub_in,n,x_in,ny1,ny2,y_in,np,parameters_in,work_in , nwork, iwork_in, niwork, anew, bnew, order , p,np2, max_num_subintervals) ! in :bvp_solverf:BVP_INTERFACE.f90:bvp
+                integer :: node_in
+                integer :: npar_in
+                integer :: leftbc_in
+                integer :: npts_in
+                integer :: info_in
+                integer :: mxnsub_in
+                integer optional,check(len(x_in)>=n),depend(x_in) :: n=len(x_in)
+                double precision dimension(n) :: x_in
+                integer optional,check(shape(y_in,0)==ny1),depend(y_in) :: ny1=shape(y_in,0)
+                integer optional,check(shape(y_in,1)==ny2),depend(y_in) :: ny2=shape(y_in,1)
+                double precision dimension(ny1,ny2) :: y_in
+                integer optional,check(len(parameters_in)>=np),depend(parameters_in) :: np=len(parameters_in)
+                double precision dimension(np) :: parameters_in
+                integer optional,check(len(work_in)>=nwork),depend(work_in) :: nwork=len(work_in)
+                double precision dimension(nwork) :: work_in
+                integer optional,check(len(iwork_in)>=niwork),depend(iwork_in) :: niwork=len(iwork_in)
+                integer dimension(niwork) ::iwork_in
+                double precision :: anew, bnew
+                integer :: order, max_num_subintervals
+                double precision dimension(np2) :: p
+                integer optional,check(len(p)>=np2),depend(p) :: np2=len(p)
+            end subroutine bvp_extend_wrap
+        end module bvp
+    end interface
+
+end python module bvp_solverf
+
+! This file was auto-generated with f2py (version:2_6308).
+! See http://cens.ioc.ee/projects/f2py2e/

@@ -7,7 +7,7 @@ To join the mailing list send an e-mail to scikits-bvp_solver+subscribe@googlegr
 
 Installing and learning to use :mod:`scikits.bvp_solver`
 -----------------------------------------
-The easiest way to learn how to install and use :mod:`scikits.bvp_solver` is to read the :doc:`tutorial <tutorial>`. It is also helpful to look at the :doc:`examples <examples/examples>`, and to read about the :doc:`template generator <core.get_template>`, which will generate a code skeleton for a boundary value problem which can then be filled in. Using the template generator reduces the busywork of solving a boundary value problem.
+The easiest way to learn how to install and use :mod:`scikits.bvp_solver` is to read the :doc:`tutorial <tutorial>`. It is also helpful to look at the :doc:`examples <examples/examples>`, and to read about the :doc:`template generator <core.get_template>`, which will generate a code skeleton for a boundary value problem which can then be filled in. Using the template generator reduces the busywork of solving a boundary value problem. 
 
 Documentation
 -------------
@@ -18,3 +18,15 @@ Documentation
    tutorial
    examples/examples
    core
+
+Compilation Help
+-----------------
+:mod:`scikits.bvp_solver` requires the gfortran compiler; it may work with other f90 compilers, but this has not been tested.
+
+Compiling on Windows
+---------------------
+To install on Windows (tested on Windows 7):
+
+#. Get MinGW with gfortran `here <http://www.equation.com/servlet/equation.cmd?fa=fortran>`_
+
+#. Compile from source using ``python setup.py config --compiler=mingw32 build --compiler=mingw32 install``

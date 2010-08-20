@@ -8,6 +8,31 @@ import numpy
 import pylab
 print ("test #1")
 
+"""
+ U.M. Ascher and R.D. Russell, Reformulation of boundary
+ value problems into `standard' form, SIAM Review 23 (1981)
+ 238-254 use a BVP from electromagnetic self-interaction
+ theory to discuss problems with singular coefficients set
+ on an infinite interval.  After some preparation they solve
+
+    u'' + 4*u'/t + (t*u - 1)*u = 0
+
+    u'(0) = 0 
+    u(L) + u'(L) = 0
+    
+ The problem is set on
+ an infinite interval, so some experimentation is necessary
+ to verify that a sufficiently large L has been specified.
+ They present results for u(0) when L = 5,8,10,20.  They
+ use the initial guess u(t) = 2 for 0 <= t <= 1.5 and 
+ u(t) = 2*exp(1.5 - t) for t > 1.5.  We use this guess for
+ the first L and thereafter use the solution for one L as
+ the guess for the next, extending to the right with the
+ value from their guess (which has the right asymptotic
+ behavior).
+ """
+
+
 
 def function1(X , Y):
     return numpy.array([Y[1], -(X*Y[0] - 1.0)*Y[0]])

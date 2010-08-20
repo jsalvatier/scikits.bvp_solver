@@ -8,6 +8,26 @@ import numpy
 import pylab
 print ("example #4")
 
+"""
+ This is the MAT4BVP example of Matlab.  It finds the fourth
+ eigenvalue of Mathieu's equation
+
+      y'' + (lambda - 2*q*cos(2*x))*y = 0
+   
+ on the interval [0, pi] with boundary conditions y'(0) = 0, 
+ y'(pi) = 0 when the parameter q = 5.
+
+ Special codes for Sturm-Liouville problems can compute specific
+ eigenvalues. The general-purpose code BVP_SOLVER can only compute 
+ an eigenvalue near to a guessed value. We can make it much more 
+ likely that we compute the eigenfunction corresponding to the fourth 
+ eigenvalue by supplying a guess that has the correct qualitative 
+ behavior. The eigenfunction y(x) is determined only to a constant 
+ multiple, so the normalizing condition y(0) = 1 is used to specify 
+ a particular solution.
+"""
+
+
 Q = 5.0
 
 def function(X,Y,P):
@@ -63,7 +83,8 @@ def guess(X):
 
 solution = scikits.bvp_solver.solve(problem,
                             solution_guess = guess,
-                            parameter_guess = numpy.array([15.0]))
+                            parameter_guess = numpy.array([15.0]),
+                            trace = 2)
 
 x = numpy.linspace(problem.boundary_points[0],problem.boundary_points[1], 100)
 y = solution(x)

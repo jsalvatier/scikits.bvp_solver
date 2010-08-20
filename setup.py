@@ -62,8 +62,8 @@ if __name__ == "__main__":
         packages = setuptools.find_packages(),
         include_package_data = True,
         platforms = ["any"],
-        requires=["numpy >= 1.2"],
-        tests_require = ['nose >= 0.10.3',],
+        requires=["numpy"],
+        tests_require = ['nose',],
         test_suite='nose.collector',
         zip_safe = True,
         classifiers =classifiers)

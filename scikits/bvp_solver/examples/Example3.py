@@ -8,6 +8,19 @@ import scikits.bvp_solver
 import numpy
 import pylab
 
+"""
+ This is Example 3.5.2 of Solving ODEs with Matlab, a nonlinear
+ eigenvalue problem of lubrication theory studied in section
+ 6.1 of H.B. Keller, Numerical Methods for Two-Point Boundary-
+ Value Problems, Dover, New York, 1992.
+ 
+ Problem specification:
+ y' = (sin(x)**2 - p * sin(x) **4/y)/eps
+ 0 = y(0) - 1
+ 0 = y(L) - 1
+ 
+"""
+
 print ("test #2 (unknown parameters)")
 eps = .1
 def function2(X , Y, P):

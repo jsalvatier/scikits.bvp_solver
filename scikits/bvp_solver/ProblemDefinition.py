@@ -242,6 +242,11 @@ class ProblemDefinition:
         """Test that the boundary value problem definition is self consistent, and
         tests whether test_solution is consistent with the bvp definition.
         This requires some legal values for the parameters and thus requires a test solution.
+        
+        Parameters
+        ----------
+        test_solution : :class:`Solution`
+            solution to be tested with
         """
 
         if self._num_parameters > 0:

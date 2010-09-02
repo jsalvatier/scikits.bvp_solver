@@ -1,8 +1,8 @@
 .. currentmodule:: scikits.bvp_solver
 
-====================
-Core Package Members
-====================
+==================
+scikits.bvp_solver
+==================
 
 .. autosummary::
 	:toctree:

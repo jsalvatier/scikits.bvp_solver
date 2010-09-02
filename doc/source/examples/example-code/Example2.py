@@ -64,8 +64,8 @@ def guess_y1(X):
 
     return Y
 
-singular_term = numpy.zeros((2,2))
-singular_term[1,1] = -4.0
+singular_term = numpy.zeros((2,2)) # creates a 2x2 matrix of zeros
+singular_term[1,1] = -4.0 # set the lower right term 
 
 
 L = [5, 8 , 10, 20]

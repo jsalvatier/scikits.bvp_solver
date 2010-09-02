@@ -12,6 +12,7 @@ Example Problems
 	examples.example4
 	examples.example5
 	examples.example6
+	examples.example7
 
 * :doc:`Example 1 <examples.example1>` - Tutorial Example
 * :doc:`examples.templateExample` - :doc:`Output <examples.templateExampleOutput>`
@@ -28,8 +29,9 @@ Example Problems
 * :doc:`Example 4 <examples.example4>` - based off of the `Matlab MAT4BVP example <http://cs.stmarys.ca/~muir/BVP_SOLVER_Files/mathieu.f90>`_
 	* function derivative callback
 	* function callback for guess
-	* a singular term
 * :doc:`Example 5 <examples.example5>` - based off of this `Shock wave nozzle example <http://cs.stmarys.ca/~muir/BVP_SOLVER_Files/swave.f90>`_
 	* function derivative callback
 	* boundary conditions callback
 * :doc:`Example 6 <examples.example6>`
+* :doc:`Example 7 <examples.example7>` - chemical reactor engineering example provided by Mauricio Angeles (:download:`in depth explanation <Axial_Dispersion_Model.pdf>`)
+	*  2nd order

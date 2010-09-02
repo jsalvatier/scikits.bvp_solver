@@ -1,3 +1,5 @@
+.. currentmodule:: scikits.bvp_solver
+
 Welcome
 =====================================
 
@@ -6,8 +8,8 @@ Welcome
 To join the mailing list send an e-mail to scikits-bvp_solver+subscribe@googlegroups.com
 
 Installing and learning to use :mod:`scikits.bvp_solver`
------------------------------------------
-The easiest way to learn how to install and use :mod:`scikits.bvp_solver` is to read the :doc:`tutorial <tutorial>`. It is also helpful to look at the :doc:`examples <examples/examples>`, and to read about the :doc:`template generator <core.get_template>`, which will generate a code skeleton for a boundary value problem which can then be filled in. Using the template generator reduces the busywork of solving a boundary value problem. 
+--------------------------------------------------------
+:mod:`scikits.bvp_solver` is available through `PyPi <http://pypi.python.org/pypi/scikits.bvp_solver>`_. The easiest way to learn how to install and use :mod:`scikits.bvp_solver` is to read the :doc:`tutorial <tutorial>`. It is also helpful to look at the :doc:`examples <examples/examples>`, and to read about the :doc:`template generator <scikits.bvp_solver.get_template>`, which will generate a code skeleton for a boundary value problem which can then be filled in. Using the template generator reduces the busywork of solving a boundary value problem. 
 
 Documentation
 -------------
@@ -18,6 +20,8 @@ Documentation
    tutorial
    examples/examples
    core
+
+The `BVP_SOLVER webpage <http://cs.stmarys.ca/~muir/BVP_SOLVER_Webpage.shtml>`_ has several more Fortran examples which should translate easily as well as a `paper <http://cs.stmarys.ca/~muir/JNAIAM_Shampine_Muir_Xu2006.pdf>`_ on the solver which describes its usage and capabilities in greater detail.  
 
 Compilation Help
 -----------------

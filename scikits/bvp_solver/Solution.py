@@ -83,7 +83,7 @@ class Solution:
         read only, int
             Indicates success or failure of the solving operation.
         """
-        return self._yerror
+        return self._successIndicator
 
     @property
     def extended(self):
@@ -91,7 +91,7 @@ class Solution:
         read only, logical
             Indicates whether the solution has been extended.
         """
-        return self._yerror
+        return self._extended
 
     def __call__(self, points, eval_derivative = False):
         """Evaluates the approximate solution and optionally the first derivative at an array of points.
@@ -223,8 +223,8 @@ class Solution:
                       parameters = tools.fromf(bvp_object.parameters),
                       work = tools.fromf(bvp_object.work),
                       iwork = tools.fromf(bvp_object.iwork),
-                      yerror = bvp_object.yerror,
-                      successIndicator = bvp_object.info)
+                      yerror = tools.fromf(bvp_object.yerror),
+                      successIndicator = tools.fromf(bvp_object.info))
         return new
 
     @staticmethod

@@ -17,9 +17,9 @@ MAINTAINER          = 'John Salvatier'
 MAINTAINER_EMAIL    = "jsalvati@u.washington.edu"
 URL                 = "http://packages.python.org/scikits.bvp_solver/"
 LICENSE             = "BSD"
-VERSION             = "0.3.0"
+VERSION             = "0.3.1"
 
-classifiers =  ['Development Status :: 4 - Beta',
+classifiers =  ['Development Status :: 5 - ',
                 'Programming Language :: Python',
                 'License :: OSI Approved :: BSD License',
                 'Intended Audience :: Science/Research',

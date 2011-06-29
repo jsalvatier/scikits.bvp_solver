@@ -73,7 +73,7 @@ function sol_from_params  (NODE_in,NPAR_in, LEFTBC_in ,NPTS_in,INFO_in, &
     	sol_out%LEFTBC = LEFTBC_in
 		sol_out%MXNSUB = MXNSUB_in
 		sol_out%NPTS = NPTS_in
-		sol_out%INFO = INFO
+		sol_out%INFO = INFO_in
 
 		sol_out%X => X_in
 		sol_out%Y => Y_in

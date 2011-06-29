@@ -6,20 +6,20 @@ DISTNAME            = 'scikits.bvp_solver'
 DESCRIPTION         = "Python package for solving two-point boundary value problems"
 LONG_DESCRIPTION    ="""
         bvp_solver is a Python package for solving two-point boundary value problems that wraps
-        a slightly modified BVP_SOLVER (see http://cs.stmarys.ca/~muir/BVP_SOLVER_Webpage.shtml). It fully working 
-        and in beta testing. Installation indstructions, a tutorial, examples and documentation can be found at 
-        http://packages.python.org/scikits.bvp_solver/. If you have questions or suggestions 
+        a slightly modified BVP_SOLVER (see http://cs.stmarys.ca/~muir/BVP_SOLVER_Webpage.shtml).
+	Installation indstructions, a tutorial, examples and documentation can be found at 
+	http://packages.python.org/scikits.bvp_solver/. If you have questions or suggestions 
         send an e-mail to the mailing list or me.
 
         To join the mailing list send an e-mail to scikits-bvp_solver+subscribe@googlegroups.com
         """
 MAINTAINER          = 'John Salvatier'
-MAINTAINER_EMAIL    = "jsalvati@u.washington.edu"
+MAINTAINER_EMAIL    = "jsalvatier@gmail.com"
 URL                 = "http://packages.python.org/scikits.bvp_solver/"
 LICENSE             = "BSD"
-VERSION             = "0.3.1"
+VERSION             = "1.0"
 
-classifiers =  ['Development Status :: 5 - ',
+classifiers =  ['Development Status :: 5 - Production/Stable',
                 'Programming Language :: Python',
                 'License :: OSI Approved :: BSD License',
                 'Intended Audience :: Science/Research',

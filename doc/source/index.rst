@@ -34,3 +34,7 @@ To install on Windows (tested on Windows 7):
 #. Get MinGW with gfortran `here <http://www.equation.com/servlet/equation.cmd?fa=fortran>`_
 
 #. Compile from source using ``python setup.py config --compiler=mingw32 build --compiler=mingw32 install``
+
+Acknowledgments
+---------------
+Many thanks to Lawrence Shampine, Paul Muir, and H. Xu for writing the original Fortran software, especially Paul for advising me and making a BSD compatible version of the software. 

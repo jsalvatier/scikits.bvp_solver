@@ -96,16 +96,19 @@ def solve(bvp_problem,
                 init_solution = Solution.from_arg_list(bvp_solverf.bvp)
 
         else:
+            y_in = numpy.zeros((bvp_problem.num_ODE,1))
 
-            bvp_solverf.bvp.guess_3_wrap(node_in = bvp_problem.num_ODE,
-                                           nparam_in = bvp_problem.num_parameters,
+            bvp_solverf.bvp.guess_1_wrap(nparam_in = bvp_problem.num_parameters,
                                            leftbc_in = bvp_problem.num_left_boundary_conditions,
-                                           x_in= tools.farg(initial_mesh),
-                                           fcn = solution_guess,
+                                           x_in = tools.farg(initial_mesh),
+                                           y_in = y_in,
                                            parameters_in = tools.farg(parameter_guess),
-                                           mxnsub_in = max_subintervals)
+                                           mxnsub_in = max_subintervals,
+                                           node_in = bvp_problem.num_ODE)
 
             init_solution = Solution.from_arg_list(bvp_solverf.bvp)
+            for i,v in enumerate(init_solution._mesh):
+                init_solution._solution[:, i] = solution_guess(v)
 
 
     if not (method == 2 or method == 4 or method == 6 ):
@@ -171,3 +174,15 @@ def solve(bvp_problem,
         raise ValueError("Boundary value problem solving failed. Run with trace = 1 or 2 for more information.")
 
     return calculatedSolution
+
+def _guess_3_wrap(node_in,
+                 nparam_in ,
+                 leftbc_in,
+                 x_in,
+                 fcn,
+                 parameters_in,
+                 mxnsub_in):
+    y_in = 0.0
+    sol = bvp_solverf.bvp.guess_1_wrap(node_in,nparam_in, leftbc_in, x_in, y_in,
+            parameters_in, mxnsub_in)
+    

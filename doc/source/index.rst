@@ -37,7 +37,7 @@ To install on Windows (tested on Windows 7):
 
 Changes to BVP_SOLVER
 ---------------------
-The modified version of the BVP_SOLVER package replaces the linear system solver COLROW [Díaz, G. Fairweather, and P. Keast, 1983, http://dl.acm.org/citation.cfm?id=356054] with a related  linear system solver `LAMPAK <http://www.mscs.dal.ca/~keast/research/leq/lampak.f.>`_. This modified version of BVP_SOLVER is BSD licsense compatible. COLROW employs row elimination with row pivoting alternated with column elimination with column pivoting to avoid fill-in in the structured matrices that arise. LAMPAK employs alternate row and column interchanges (i.e., pivoting) to avoid fill-in but performs only row elimination to reduce the matrices. The authors report that LAMPAK gives essentially the same results as COLROW in all the numerical experiments they considered.
+The modified version of the BVP_SOLVER package replaces the linear system solver COLROW (`Díaz, G. Fairweather, and P. Keast, 1983 <http://dl.acm.org/citation.cfm?id=356054>`_) with a related  linear system solver `LAMPAK <http://www.mscs.dal.ca/~keast/research/leq/lampak.f>`_. This modified version of BVP_SOLVER is BSD licsense compatible. COLROW employs row elimination with row pivoting alternated with column elimination with column pivoting to avoid fill-in in the structured matrices that arise. LAMPAK employs alternate row and column interchanges (i.e., pivoting) to avoid fill-in but performs only row elimination to reduce the matrices. The authors report that LAMPAK gives essentially the same results as COLROW in all the numerical experiments they considered.
 
 Acknowledgments
 ---------------

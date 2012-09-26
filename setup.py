@@ -17,7 +17,7 @@ MAINTAINER          = 'John Salvatier'
 MAINTAINER_EMAIL    = "jsalvatier@gmail.com"
 URL                 = "http://packages.python.org/scikits.bvp_solver/"
 LICENSE             = "BSD"
-VERSION             = "1.0"
+VERSION             = "1.1"
 
 classifiers =  ['Development Status :: 5 - Production/Stable',
                 'Programming Language :: Python',
@@ -41,12 +41,11 @@ def configuration(parent_package='',top_path=None):
 
     config.add_data_files('scikits/__init__.py')
     config.add_extension('bvp_solverf',
-                         sources=[
-                                  'scikits/bvp_solver/lib/BVP_LA.f',
-                                  'scikits/bvp_solver/lib/lampak.f',
-                                  'scikits/bvp_solver/lib/BVP_M.f90',
-                                  'scikits/bvp_solver/lib/bvp_interface.pyf',
-                                  'scikits/bvp_solver/lib/BVP_INTERFACE.f90'])
+                         sources=['scikits/bvp_solver/lib/lampak.f',
+				  'scikits/bvp_solver/lib/BVP_LA.f',
+				  'scikits/bvp_solver/lib/BVP_M.f90',
+                                  'scikits/bvp_solver/lib/BVP_INTERFACE.f90',
+				  'scikits/bvp_solver/lib/bvp_interface.pyf'])
 
     config.add_data_files('scikits/bvp_solver/examples/*.*')
     config.add_data_files('scikits/bvp_solver/lib/BVP_SOLVER_License.txt')

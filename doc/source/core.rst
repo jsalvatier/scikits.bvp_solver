@@ -1,4 +1,4 @@
-.. currentmodule:: scikits.bvp_solver
+.. py:currentmodule:: scikits.bvp_solver
 
 ==================
 scikits.bvp_solver

@@ -23,6 +23,10 @@ Documentation
 
 The `BVP_SOLVER webpage <http://cs.stmarys.ca/~muir/BVP_SOLVER_Webpage.shtml>`_ has several more Fortran examples which should translate easily as well as a `paper <http://cs.stmarys.ca/~muir/JNAIAM_Shampine_Muir_Xu2006.pdf>`_ on the solver which describes its usage and capabilities in greater detail.  
 
+Source
+------
+The source can be found on GitHub `here <https://github.com/jsalvatier/scikits.bvp_solver>`_.
+
 Compilation Help
 -----------------
 :mod:`scikits.bvp_solver` requires the gfortran compiler; it may work with other f90 compilers, but this has not been tested.
@@ -43,4 +47,6 @@ Acknowledgments
 ---------------
 Many thanks to Lawrence Shampine, Paul Muir, and H. Xu for writing the original Fortran software, BVP_SOLVER. Additional thanks to Paul Muir for the development of a BSD compliant version of BVP_SOLVER and for consultation during the development of  the Python wrapper for BVP_SOLVER.
 
-
+Bug Reports
+----------
+Please make bug reports on GitHub `here <https://github.com/jsalvatier/scikits.bvp_solver/issues>`_. 

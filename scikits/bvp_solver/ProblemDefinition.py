@@ -362,7 +362,7 @@ class ProblemDefinition:
         places = 4
 
         # chose the point near the middle of the test_solution to check the derivatives
-        middlePoint = numpy.round(test_solution.mesh.size * .61, 0)
+        middlePoint = int(numpy.round(test_solution.mesh.size * .61, 0))
 
 
         if self.has_function_derivative:

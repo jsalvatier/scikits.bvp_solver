@@ -1,7 +1,7 @@
-import bvp_solverf
+from . import bvp_solverf
 import numpy
-from Solution import Solution
-import tools
+from . import Solution
+from . import tools
 
 def solve(bvp_problem,
           solution_guess,

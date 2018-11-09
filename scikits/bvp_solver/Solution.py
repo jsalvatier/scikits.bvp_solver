@@ -1,6 +1,6 @@
 import numpy
-import tools
-import bvp_solverf
+from . import tools
+from . import bvp_solverf
 import pickle
 
 

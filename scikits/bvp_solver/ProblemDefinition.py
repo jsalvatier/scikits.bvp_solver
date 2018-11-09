@@ -1,5 +1,5 @@
 import numpy
-import tools
+from . import tools
 import pickle
 
 class ProblemDefinition:

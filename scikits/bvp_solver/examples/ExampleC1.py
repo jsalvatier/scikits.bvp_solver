@@ -65,6 +65,8 @@ if __name__=='__main__':
     y = solution(x)
     print("lambda = " + str(solution.parameters[0]))
 
+    solution.save("test_ExampleC1.sol")
+
 
     fig = plt.figure()
     ax = fig.add_subplot(111)

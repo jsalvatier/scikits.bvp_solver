@@ -10,8 +10,8 @@ import scikits.bvp_solver
 import numpy
 from numpy.testing import assert_almost_equal
 import nose
-import example2data as data
-import testing
+from . import example2data as data
+from . import testing
 
 #Results obtained by Ascher/Russell.
 

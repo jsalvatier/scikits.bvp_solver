@@ -7,9 +7,9 @@
 import scikits.bvp_solver
 import numpy
 from numpy.testing import assert_almost_equal
-import example3data as data
+from . import example3data as data
 import nose
-import testing
+from . import testing
 
 
 eps = .1

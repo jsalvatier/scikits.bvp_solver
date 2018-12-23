@@ -1,0 +1,11 @@
+TODO:
+
+1. Fixing installation on Windows:
+
+ImportError: DLL
+
+Workaround: need to copy the dll file to the directory that *.pyd lives:
+
+https://stackoverflow.com/questions/48826283/compile-fortran-module-with-f2py-and-python-3-6-on-windows-10
+
+

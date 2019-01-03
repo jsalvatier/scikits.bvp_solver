@@ -1,7 +1,8 @@
 import numpy
-import tools
-import bvp_solverf
+from . import tools
+from . import bvp_solverf
 import pickle
+import sys
 
 
 class Solution:
@@ -241,9 +242,14 @@ class Solution:
         sol : Solution
             Solution loaded from the file.
         """
-        loadfile = open(path, "r")
-        solution = pickle.load(loadfile)
-        loadfile.close()
+        if sys.version_info[0] < 3:
+            loadfile = open(path, "r")
+            solution = pickle.load(loadfile)
+            loadfile.close()
+        else:
+            loadfile = open(path, "rb")
+            solution = pickle.load(loadfile)
+            loadfile.close()
         return solution
 
     def save(self, path):
@@ -254,6 +260,11 @@ class Solution:
         path : string
             Path of the file to store the Solution in.
         """
-        savefile = open(path, "w")
-        pickle.dump(self, savefile)
-        savefile.close()
+        if sys.version_info[0] < 3:
+            savefile = open(path, "w")
+            pickle.dump(self, savefile)
+            savefile.close()
+        else:
+            savefile = open(path, "wb")
+            pickle.dump(self, savefile, protocol=2)
+            savefile.close()

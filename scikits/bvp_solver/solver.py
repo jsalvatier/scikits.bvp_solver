@@ -1,7 +1,7 @@
-import bvp_solverf
+from . import bvp_solverf
 import numpy
-from Solution import Solution
-import tools
+from .Solution import Solution
+from . import tools
 
 def solve(bvp_problem,
           solution_guess,
@@ -54,13 +54,13 @@ def solve(bvp_problem,
     init_solution = 0
 
     if isinstance(solution_guess, Solution):
-        if not (initial_mesh == None and
-                parameter_guess == None):
+        if not (initial_mesh is None and
+                parameter_guess is None):
             raise ValueError("values for initial mesh and parameter_guess must not be given if solution_guess is a Solution object")
         init_solution = solution_guess
     else:
 
-        if initial_mesh == None:
+        if initial_mesh is None:
             initial_mesh = numpy.linspace(bvp_problem.boundary_points[0],bvp_problem.boundary_points[1] , 10)
 
         # here we call one of the BVP_GUESS_i routines that make up BVP_INIT to set up the solution

@@ -9,9 +9,9 @@ import scikits.bvp_solver
 import numpy
 from numpy import array
 from numpy.testing import assert_almost_equal
-import example5data as data
+from . import example5data as data
 import os
-import testing
+from . import testing
 
 #all None values in the code below are dummy values which must be replaced with real values
 
